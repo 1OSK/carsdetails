@@ -15,7 +15,7 @@ public class SwaggerConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .servers(List.of(
-                        new Server().url("http://localhost:8000").description("Local Server")
+                        new Server().url("http://localhost:8000").description("Local Server http://localhost:8000/swagger-ui/index.html")
                 ))
                 .info(new Info()
                         .title("Car API")

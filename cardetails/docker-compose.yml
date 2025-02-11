@@ -5,26 +5,26 @@ services:
     image: postgres:latest
     container_name: my_postgres_container
     environment:
-      POSTGRES_DB: cars     # Имя базы данных
-      POSTGRES_USER: kostya        # Имя пользователя для подключения
-      POSTGRES_PASSWORD: 1234    # Пароль для подключения
+      POSTGRES_DB: cars
+      POSTGRES_USER: kostya
+      POSTGRES_PASSWORD: 1234
     ports:
-      - "5432:5432"                       # Проброс порта для подключения к БД
+      - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data  # Для сохранения данных между перезапусками контейнера
+      - postgres_data:/var/lib/postgresql/data
 
   pgadmin:
     image: dpage/pgadmin4:latest
     container_name: my_pgadmin_container
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@admin.com  # Логин для входа в pgAdmin
-      PGADMIN_DEFAULT_PASSWORD: admin123      # Пароль для входа в pgAdmin
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
     ports:
-      - "80:80"  # Проброс порта для доступа к pgAdmin через браузер
+      - "8080:80"  # Измените порт на 8080
     depends_on:
-      - postgres  # pgAdmin будет запускаться только после запуска PostgreSQL
+      - postgres
     volumes:
-      - pgadmin_data:/var/lib/pgadmin  # Для сохранения данных pgAdmin между перезапусками
+      - pgadmin_data:/var/lib/pgadmin
 
 volumes:
   postgres_data:
